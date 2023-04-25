@@ -9,6 +9,7 @@
     "ext-json": "*",
     "cuyz/valinor": "dev-master"
   },
+  "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
       "Mytryk\\AriClient\\": "src/"
