@@ -7,7 +7,7 @@
     "guzzlehttp/guzzle": "^7.0",
     "ratchet/pawl": "~0.3",
     "ext-json": "*",
-    "cuyz/valinor": "dev-master"
+    "cuyz/valinor": "0.17.1"
   },
   "minimum-stability": "dev",
   "autoload": {
