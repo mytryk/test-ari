@@ -19,6 +19,11 @@ use Psr\Log\LoggerInterface;
 abstract class AbstractSettings
 {
     protected string $rootUri = '/ari';
+    protected string $user;
+    protected string $password;
+    protected string $host = '127.0.0.1';
+    protected int $port = 8088;
+    protected ?string $appName = null;
 
     private bool $isInDebugMode = false;
 
@@ -34,12 +39,17 @@ abstract class AbstractSettings
      * @param string|null $appName
      */
     public function __construct(
-        protected string $user,
-        protected string $password,
-        protected string $host = '127.0.0.1',
-        protected int $port = 8088,
-        protected ?string $appName = null
+        string $user,
+        string $password,
+        string $host = '127.0.0.1',
+        int $port = 8088,
+        ?string $appName = null
     ) {
+        $this->appName = $appName;
+        $this->port = $port;
+        $this->host = $host;
+        $this->password = $password;
+        $this->user = $user;
     }
 
     /**
@@ -126,7 +136,8 @@ abstract class AbstractSettings
     public function setRootUri(string $rootUri): void
     {
         if (
-            (str_starts_with($rootUri, '/'))
+            //(str_starts_with($rootUri, '/'))
+            substr($rootUri, 0, 1) === '/'
             && (strrpos($rootUri, '/') !== (strlen($rootUri) - 1))
         ) {
             $this->rootUri = $rootUri;
