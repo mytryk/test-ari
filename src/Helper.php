@@ -1,7 +1,4 @@
 <?php
-
-/** @copyright 2020 ng-voice GmbH */
-
 declare(strict_types=1);
 
 namespace Mytryk\AriClient;
@@ -16,7 +13,6 @@ use Psr\Log\LoggerInterface;
  *
  * @package Mytryk\AriClient
  *
- * @author Lukas Stermann <lukas@ng-voice.com>
  */
 class Helper
 {
