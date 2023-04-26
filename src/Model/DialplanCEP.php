@@ -15,7 +15,7 @@ namespace Mytryk\AriClient\Model;
  */
 class DialplanCEP implements ModelInterface
 {
-    public mixed $priority;
+    public $priority;
 
     public string $exten;
 
@@ -30,7 +30,7 @@ class DialplanCEP implements ModelInterface
      *
      * @return mixed
      */
-    public function getPriority(): mixed
+    public function getPriority()
     {
         return $this->priority;
     }
