@@ -237,7 +237,10 @@ abstract class AbstractWebSocketClient implements WebSocketClientInterface
 
         foreach ($myAppPublicMethodNames as $methodName) {
             // Check for correct prefix syntax on incoming ARI events
-            if (!str_starts_with($methodName, self::ARI_EVENT_HANDLER_METHOD_PREFIX)) {
+            if (
+                self::ARI_EVENT_HANDLER_METHOD_PREFIX !== substr($methodName, 0, strlen(self::ARI_EVENT_HANDLER_METHOD_PREFIX))
+                //!str_starts_with($methodName, self::ARI_EVENT_HANDLER_METHOD_PREFIX)
+            ) {
                 // Allow any public methods without the prefix
                 continue;
             }
@@ -297,7 +300,7 @@ abstract class AbstractWebSocketClient implements WebSocketClientInterface
         try {
             $ariEventAsObject = $this->dataMappingService
                 ->map(
-                    $ariEventAsObject::class,
+                    get_class($ariEventAsObject),
                     Source::array($ariEventAsArray)->camelCaseKeys()
                 );
         } catch (Throwable $exception) {
