@@ -187,7 +187,7 @@ abstract class AbstractRestClient
             foreach ($decodedResponseBody as $modelAsArray) {
                 $targetModelInstance = $this->dataMappingService
                     ->map(
-                        $ariModelInterface::class,
+                        get_class($ariModelInterface),
                         Source::array($modelAsArray)->camelCaseKeys()
                     );
 
@@ -242,7 +242,7 @@ abstract class AbstractRestClient
 
             $modelInterface = $this->dataMappingService
                 ->map(
-                    $modelInterface::class,
+                    get_class($modelInterface),
                     Source::array($decodedResponseBody)->camelCaseKeys()
                 );
         } catch (MappingError $exception) {
